@@ -145,25 +145,42 @@ section{padding:clamp(64px,9vw,112px) 0}
 .card-foot{padding:20px 26px 26px}
 .card-foot .btn{width:100%}
 
-/* redes: cada card com a identidade da rede */
-.social{background:#fff}
-.sgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.scard{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:18px;text-decoration:none;color:#fff;border-radius:var(--radius);padding:26px 24px;box-shadow:0 14px 30px -16px var(--sh,rgba(0,0,0,.45));transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,filter .3s;-webkit-tap-highlight-color:transparent}
-.scard::after{content:"";position:absolute;inset:0;background:radial-gradient(220px 140px at 90% -10%,rgba(255,255,255,.28),transparent 70%);pointer-events:none}
+/* redes: vidro (glass) com a cor de cada rede */
+.social{background:linear-gradient(180deg,#fff 0,var(--areia) 100%)}
+.stage{position:relative;isolation:isolate}
+.social{overflow:hidden}
+.orbs{position:absolute;inset:-120px -80px;z-index:0;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 60% 55% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 60% 55% at 50% 50%,#000 55%,transparent 100%)}
+.orbs i{position:absolute;width:280px;height:280px;border-radius:50%;filter:blur(50px);opacity:.7;transform:translate(-50%,-50%)}
+.orbs i:nth-child(1){left:22%;top:50%;background:radial-gradient(circle at 35% 35%,#feda75,#fa7e1e 35%,#d62976 70%,#962fbf)}
+.orbs i:nth-child(2){left:50%;top:50%;background:radial-gradient(circle,#4f9bff,#1877f2 60%,#0b4fb8)}
+.orbs i:nth-child(3){left:78%;top:50%;background:radial-gradient(circle,#5af29a,#25d366 55%,#128c7e)}
+.sgrid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.scard{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:18px;text-decoration:none;color:#fff;border-radius:24px;padding:26px 24px;
+  background:linear-gradient(140deg,rgba(var(--c),.62) 0%,rgba(var(--c),.38) 100%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(255,255,255,.15),inset 0 0 0 1px rgba(255,255,255,.08),0 22px 44px -22px rgba(var(--c),.75);
+  text-shadow:0 1px 2px rgba(0,0,0,.18);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,background .35s;-webkit-tap-highlight-color:transparent}
+.scard::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,.08) 42%,rgba(255,255,255,0) 60%);pointer-events:none}
+.scard::after{content:"";position:absolute;top:-60%;left:-30%;width:60%;height:220%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);transform:rotate(18deg) translateX(-160%);transition:transform .9s ease;pointer-events:none}
 .scard>*{position:relative;z-index:1}
-.scard:hover{transform:translateY(-5px);box-shadow:0 24px 40px -16px var(--sh,rgba(0,0,0,.55));filter:saturate(1.08)}
-.ico{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.2);color:#fff;transition:background .3s,color .3s,transform .3s}
+.scard:hover{transform:translateY(-6px);background:linear-gradient(140deg,rgba(var(--c),.72) 0%,rgba(var(--c),.46) 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.85),inset 0 -1px 0 rgba(255,255,255,.2),0 30px 54px -22px rgba(var(--c),.85)}
+.scard:hover::after{transform:rotate(18deg) translateX(420%)}
+.ico{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:background .3s,color .3s,transform .3s}
 .ico svg{width:24px;height:24px}
-.scard:hover .ico{background:#fff;color:var(--brand);transform:rotate(-6deg)}
+.scard:hover .ico{background:#fff;color:rgb(var(--c));transform:rotate(-6deg)}
 .scard h3{font-size:1.25rem;font-weight:500;color:#fff}
-.scard .t small{display:block;font-size:.88rem;color:rgba(255,255,255,.88);margin-top:2px}
+.scard .t small{display:block;font-size:.88rem;color:rgba(255,255,255,.92);margin-top:2px}
 .scard .go{margin-top:auto;font-size:.8rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#fff;display:inline-flex;align-items:center;gap:.4rem}
 .scard .go svg{width:15px;height:15px;transition:transform .25s}
 .scard:hover .go svg{transform:translateX(4px)}
-.scard--ig{background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);--sh:rgba(204,35,102,.55);--brand:#cc2366}
-.scard--fb{background:linear-gradient(135deg,#3b8bff,#1877f2 55%,#0f5fd0);--sh:rgba(24,119,242,.55);--brand:#1877f2}
-.scard--wa{background:linear-gradient(135deg,#2fe27a,#25d366 45%,#128c7e);--sh:rgba(37,211,102,.55);--brand:#128c7e}
-.scard--dev{background:linear-gradient(135deg,#128c7e,#0b6e62 55%,#075e54);--sh:rgba(7,94,84,.55);--brand:#075e54}
+.scard--ig{--c:214,41,118}
+.scard--fb{--c:24,119,242}
+.scard--wa{--c:18,160,110}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .scard{background:linear-gradient(140deg,rgba(var(--c),.92),rgba(var(--c),.78))}
+}
 
 /* rodapé */
 .foot{background:var(--argila);color:#d9c3b8;padding:48px 0 40px;text-align:center;font-size:.88rem;line-height:1.7}
@@ -176,9 +193,9 @@ section{padding:clamp(64px,9vw,112px) 0}
 /* entrada animada */
 .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease var(--d,0ms),transform .9s cubic-bezier(.2,.8,.2,1) var(--d,0ms)}
 .js .reveal.in{opacity:1;transform:none}
-.js .reveal.in.card,.js .reveal.in.scard{transition:opacity .8s ease var(--d,0ms),transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,filter .3s}
+.js .reveal.in.card,.js .reveal.in.scard{transition:opacity .8s ease var(--d,0ms),transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,background .35s}
 .js .reveal.in.card:hover{transform:translateY(-6px)}
-.js .reveal.in.scard:hover{transform:translateY(-5px)}
+.js .reveal.in.scard:hover{transform:translateY(-6px)}
 .hero-text>*{animation:up .9s cubic-bezier(.2,.8,.2,1) both}
 .hero-text>*:nth-child(2){animation-delay:.08s}.hero-text>*:nth-child(3){animation-delay:.16s}.hero-text>*:nth-child(4){animation-delay:.24s}.hero-text>*:nth-child(5){animation-delay:.32s}.hero-text>*:nth-child(6){animation-delay:.4s}
 .hero-photo{animation:fade 1.1s ease both}
@@ -207,6 +224,9 @@ section{padding:clamp(64px,9vw,112px) 0}
   .grid{grid-template-columns:1fr}
   .sgrid{grid-template-columns:1fr}
   .scard{flex-direction:row;align-items:center;gap:16px;padding:18px 20px}
+  .orbs{-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 55%,transparent 100%)}
+  .orbs i{width:200px;height:200px;opacity:.6}
+  .orbs i:nth-child(1){left:30%;top:32%}.orbs i:nth-child(2){left:70%;top:50%}.orbs i:nth-child(3){left:32%;top:68%}
   .scard .ico{flex:none}
   .scard .t{min-width:0}
   .scard .go{margin:0 0 0 auto;flex:none}
@@ -299,6 +319,8 @@ section{padding:clamp(64px,9vw,112px) 0}
 <section class="social" id="redes">
   <div class="wrap">
     <div class="sec-head reveal"><p class="kicker">Redes e comunidade</p><h2>Fale e acompanhe por aqui</h2></div>
+    <div class="stage">
+    <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="sgrid">
       <a class="scard scard--ig reveal" style="--d:0ms" data-link="instagram" href="#" target="_blank" rel="noopener">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor"/></svg></div>
@@ -315,6 +337,7 @@ section{padding:clamp(64px,9vw,112px) 0}
         <div class="t"><h3>WhatsApp</h3><small>Fale comigo</small></div>
         <span class="go"><span>Conversar</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
+    </div>
     </div>
   </div>
 </section>
