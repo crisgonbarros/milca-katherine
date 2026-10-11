@@ -109,31 +109,34 @@ section{padding:clamp(64px,9vw,112px) 0}
 .visual::before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;border:1px solid rgba(91,58,47,.22)}
 .visual svg{position:relative;width:64px;height:64px;color:var(--argila);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
 .card:hover .visual svg{transform:scale(1.08)}
+.visual--logo::before{display:none}
+.visual img.logo{position:relative;width:auto;max-width:68%;max-height:82px;height:auto;filter:drop-shadow(0 8px 14px rgba(62,38,32,.12));transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.card:hover .visual img.logo{transform:scale(1.05)}
 .card-body{padding:24px 26px 6px;flex:1}
 .tag{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:.5rem}
 .card h3{font-size:1.65rem}
 .card-foot{padding:20px 26px 26px}
 .card-foot .btn{width:100%}
 
-/* redes */
+/* redes: cada card com a identidade da rede */
 .social{background:#fff}
 .sgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-.scard{display:flex;flex-direction:column;gap:18px;text-decoration:none;background:var(--areia);border:1px solid var(--linha);border-radius:var(--radius);padding:26px 24px;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s,border-color .3s;-webkit-tap-highlight-color:transparent}
-.scard:hover{transform:translateY(-5px);box-shadow:var(--shadow);background:#fff;border-color:var(--po)}
-.ico{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--nude);color:var(--terra);transition:background .3s,color .3s,border-color .3s}
-.ico svg{width:22px;height:22px}
-.scard:hover .ico{background:var(--terra);border-color:var(--terra);color:#fff}
-.scard h3{font-size:1.25rem;font-weight:400}
-.scard .t small{display:block;font-size:.85rem;color:var(--texto);margin-top:2px}
-.scard .go{margin-top:auto;font-size:.8rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);display:inline-flex;align-items:center;gap:.4rem}
+.scard{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:18px;text-decoration:none;color:#fff;border-radius:var(--radius);padding:26px 24px;box-shadow:0 14px 30px -16px var(--sh,rgba(0,0,0,.45));transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,filter .3s;-webkit-tap-highlight-color:transparent}
+.scard::after{content:"";position:absolute;inset:0;background:radial-gradient(220px 140px at 90% -10%,rgba(255,255,255,.28),transparent 70%);pointer-events:none}
+.scard>*{position:relative;z-index:1}
+.scard:hover{transform:translateY(-5px);box-shadow:0 24px 40px -16px var(--sh,rgba(0,0,0,.55));filter:saturate(1.08)}
+.ico{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.2);color:#fff;transition:background .3s,color .3s,transform .3s}
+.ico svg{width:24px;height:24px}
+.scard:hover .ico{background:#fff;color:var(--brand);transform:rotate(-6deg)}
+.scard h3{font-size:1.25rem;font-weight:500;color:#fff}
+.scard .t small{display:block;font-size:.88rem;color:rgba(255,255,255,.88);margin-top:2px}
+.scard .go{margin-top:auto;font-size:.8rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#fff;display:inline-flex;align-items:center;gap:.4rem}
 .scard .go svg{width:15px;height:15px;transition:transform .25s}
 .scard:hover .go svg{transform:translateX(4px)}
-.scard--dev{background:var(--logo);border-color:var(--logo)}
-.scard--dev h3{color:#fff}.scard--dev .t small{color:var(--po)}
-.scard--dev .ico{border-color:rgba(241,218,211,.4);color:var(--rosa)}
-.scard--dev .go{color:var(--rosa)}
-.scard--dev:hover{background:#4c2f26;border-color:#4c2f26}
-.scard--dev:hover .ico{background:var(--rosa);color:var(--argila);border-color:var(--rosa)}
+.scard--ig{background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);--sh:rgba(204,35,102,.55);--brand:#cc2366}
+.scard--fb{background:linear-gradient(135deg,#3b8bff,#1877f2 55%,#0f5fd0);--sh:rgba(24,119,242,.55);--brand:#1877f2}
+.scard--wa{background:linear-gradient(135deg,#2fe27a,#25d366 45%,#128c7e);--sh:rgba(37,211,102,.55);--brand:#128c7e}
+.scard--dev{background:linear-gradient(135deg,#128c7e,#0b6e62 55%,#075e54);--sh:rgba(7,94,84,.55);--brand:#075e54}
 
 /* rodapé */
 .foot{background:var(--argila);color:#d9c3b8;padding:48px 0 40px;text-align:center;font-size:.88rem;line-height:1.7}
@@ -146,7 +149,7 @@ section{padding:clamp(64px,9vw,112px) 0}
 /* entrada animada */
 .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease var(--d,0ms),transform .9s cubic-bezier(.2,.8,.2,1) var(--d,0ms)}
 .js .reveal.in{opacity:1;transform:none}
-.js .reveal.in.card,.js .reveal.in.scard{transition:opacity .8s ease var(--d,0ms),transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s,border-color .3s}
+.js .reveal.in.card,.js .reveal.in.scard{transition:opacity .8s ease var(--d,0ms),transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,filter .3s}
 .js .reveal.in.card:hover{transform:translateY(-6px)}
 .js .reveal.in.scard:hover{transform:translateY(-5px)}
 .hero-text>*{animation:up .9s cubic-bezier(.2,.8,.2,1) both}
@@ -191,11 +194,11 @@ section{padding:clamp(64px,9vw,112px) 0}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="mk-selo" viewBox="0 0 120 120"><circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"/><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(21.56 29) scale(.62)"><path d="M0 100V0L38 62L76 0V100"/><path d="M76 60L120 0"/><path d="M93 37L124 100"/></g></symbol><symbol id="mk-h" viewBox="0 0 267.4 120"><circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"/><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(21.56 29) scale(.62)"><path d="M0 100V0L38 62L76 0V100"/><path d="M76 60L120 0"/><path d="M93 37L124 100"/></g><path fill="currentColor" d="M148.61 46.14 152.54 53.7 156.48 46.14 157.43 55H158.32L157.02 43.37L152.54 51.97L148.06 43.37L146.77 55H147.65ZM165.6 43.8V55H166.48V43.8ZM174.34 43.8V55H179.84V54.17H175.22V43.8ZM186.91 49.4Q186.91 47.96 187.52 46.87Q188.13 45.78 189.16 45.16Q190.18 44.55 191.44 44.55Q192.22 44.55 192.88 44.73Q193.54 44.91 194.08 45.25Q194.63 45.6 195.04 46.08V44.9Q194.34 44.28 193.5 43.97Q192.67 43.65 191.44 43.65Q190.27 43.65 189.28 44.08Q188.28 44.5 187.54 45.27Q186.79 46.05 186.38 47.1Q185.97 48.15 185.97 49.4Q185.97 50.65 186.38 51.7Q186.79 52.75 187.54 53.53Q188.28 54.3 189.28 54.72Q190.27 55.15 191.44 55.15Q192.67 55.15 193.5 54.83Q194.34 54.52 195.04 53.9V52.72Q194.62 53.2 194.09 53.54Q193.55 53.89 192.89 54.07Q192.24 54.25 191.44 54.25Q190.18 54.25 189.16 53.63Q188.13 53.01 187.52 51.91Q186.91 50.82 186.91 49.4ZM203.66 51.24H209.41L209.12 50.41H203.95ZM206.51 45.39 208.72 50.74 208.8 50.95 210.47 55H211.46L206.51 43.37L201.57 55H202.56L204.25 50.89L204.33 50.69Z"/><path fill="currentColor" d="M147.31 69.8V81H148.2V69.8ZM152.84 69.8 147.94 75.07 153.07 81H154.19L149.02 75.05L153.95 69.8ZM161.77 77.24H167.52L167.23 76.41H162.06ZM164.62 71.39 166.83 76.74 166.92 76.95 168.58 81H169.57L164.62 69.37L159.68 81H160.67L162.36 76.89L162.44 76.69ZM175.14 70.64H178.08V81H178.97V70.64H181.91V69.8H175.14ZM189.14 75.32H196.69V74.49H189.14ZM196.1 69.8V81H196.99V69.8ZM188.67 69.8V81H189.56V69.8ZM205.34 81H210.9V80.17H205.34ZM205.34 70.63H210.9V69.8H205.34ZM205.34 75.28H210.58V74.45H205.34ZM204.88 69.8V81H205.77V69.8ZM220.52 75.66 224.23 81H225.33L221.51 75.66ZM218.62 69.8V81H219.51V69.8ZM219.09 70.59H221.18Q222.04 70.59 222.69 70.87Q223.35 71.15 223.72 71.7Q224.09 72.24 224.09 73.05Q224.09 73.85 223.72 74.4Q223.35 74.96 222.7 75.24Q222.04 75.52 221.18 75.52H219.09V76.3H221.18Q222.27 76.3 223.12 75.92Q223.98 75.54 224.48 74.81Q224.98 74.08 224.98 73.05Q224.98 72.01 224.48 71.29Q223.98 70.56 223.12 70.18Q222.27 69.8 221.18 69.8H219.09ZM232.16 69.8V81H233.04V69.8ZM249.4 69.8V79.17L240.9 69.37V81H241.78V71.66L250.29 81.43V69.8ZM258.64 81H264.19V80.17H258.64ZM258.64 70.63H264.19V69.8H258.64ZM258.64 75.28H263.87V74.45H258.64ZM258.18 69.8V81H259.06V69.8Z"/></symbol><symbol id="mk-v" viewBox="-1.7 0 123.4 190"><circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"/><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(21.56 29) scale(.62)"><path d="M0 100V0L38 62L76 0V100"/><path d="M76 60L120 0"/><path d="M93 37L124 100"/></g><path fill="currentColor" d="M29.81 149.14 33.74 156.7 37.68 149.14 38.63 158H39.52L38.22 146.37L33.74 154.97L29.26 146.37L27.97 158H28.85ZM46.8 146.8V158H47.68V146.8ZM55.54 146.8V158H61.04V157.17H56.42V146.8ZM68.11 152.4Q68.11 150.96 68.72 149.87Q69.33 148.78 70.36 148.16Q71.38 147.55 72.64 147.55Q73.42 147.55 74.08 147.73Q74.74 147.91 75.28 148.25Q75.83 148.6 76.24 149.08V147.9Q75.54 147.28 74.7 146.97Q73.87 146.65 72.64 146.65Q71.47 146.65 70.48 147.08Q69.48 147.5 68.74 148.27Q67.99 149.05 67.58 150.1Q67.17 151.15 67.17 152.4Q67.17 153.65 67.58 154.7Q67.99 155.75 68.74 156.53Q69.48 157.3 70.48 157.72Q71.47 158.15 72.64 158.15Q73.87 158.15 74.7 157.83Q75.54 157.52 76.24 156.9V155.72Q75.82 156.2 75.29 156.54Q74.75 156.89 74.09 157.07Q73.44 157.25 72.64 157.25Q71.38 157.25 70.36 156.63Q69.33 156.01 68.72 154.91Q68.11 153.82 68.11 152.4ZM84.86 154.24H90.61L90.32 153.41H85.15ZM87.71 148.39 89.92 153.74 90 153.95 91.67 158H92.66L87.71 146.37L82.77 158H83.76L85.45 153.89L85.53 153.69Z"/><path fill="currentColor" d="M1.62 172.8V184H2.51V172.8ZM7.15 172.8 2.25 178.07 7.38 184H8.5L3.33 178.05L8.26 172.8ZM16.08 180.24H21.83L21.54 179.41H16.37ZM18.94 174.39 21.14 179.74 21.23 179.95 22.89 184H23.88L18.94 172.37L13.99 184H14.98L16.67 179.89L16.75 179.69ZM29.45 173.64H32.39V184H33.28V173.64H36.22V172.8H29.45ZM43.45 178.32H51.01V177.49H43.45ZM50.41 172.8V184H51.3V172.8ZM42.98 172.8V184H43.87V172.8ZM59.66 184H65.21V183.17H59.66ZM59.66 173.63H65.21V172.8H59.66ZM59.66 178.28H64.89V177.45H59.66ZM59.19 172.8V184H60.08V172.8ZM74.83 178.66 78.55 184H79.64L75.82 178.66ZM72.94 172.8V184H73.82V172.8ZM73.4 173.59H75.5Q76.35 173.59 77 173.87Q77.66 174.15 78.03 174.7Q78.4 175.24 78.4 176.05Q78.4 176.85 78.04 177.4Q77.67 177.96 77.01 178.24Q76.35 178.52 75.5 178.52H73.4V179.3H75.5Q76.58 179.3 77.44 178.92Q78.29 178.54 78.79 177.81Q79.29 177.08 79.29 176.05Q79.29 175.01 78.79 174.29Q78.29 173.56 77.44 173.18Q76.58 172.8 75.5 172.8H73.4ZM86.47 172.8V184H87.35V172.8ZM103.71 172.8V182.17L95.21 172.37V184H96.09V174.66L104.6 184.43V172.8ZM112.95 184H118.5V183.17H112.95ZM112.95 173.63H118.5V172.8H112.95ZM112.95 178.28H118.18V177.45H112.95ZM112.49 172.8V184H113.37V172.8Z"/></symbol></defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="mk-selo" viewBox="0 0 120 120"><circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="2.2"/><g fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(21.56 29) scale(.62)"><path d="M0 100V0L38 62L76 0V100"/><path d="M76 60L120 0"/><path d="M93 37L124 100"/></g></symbol><symbol id="mk-h" viewBox="0 0 436.2 120"><circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="2.2"/><g fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(21.56 29) scale(.62)"><path d="M0 100V0L38 62L76 0V100"/><path d="M76 60L120 0"/><path d="M93 37L124 100"/></g><path fill="currentColor" d="M156.85 22.85 168.25 43.25 179.65 22.85 182.25 46.5H186.5L182.25 9.75L168.25 35.1L154.25 9.75L150 46.5H154.25ZM196.5 11.5V46.5H200.75V11.5ZM212.75 11.5V46.5H230.75V42.5H217V11.5ZM241.75 29Q241.75 24.9 243.57 21.82Q245.4 18.75 248.35 17Q251.3 15.25 254.75 15.25Q257.25 15.25 259.32 15.9Q261.4 16.55 263.1 17.72Q264.8 18.9 266 20.45V14.85Q263.8 12.9 261.2 11.95Q258.6 11 254.75 11Q251.1 11 247.93 12.32Q244.75 13.65 242.35 16.07Q239.95 18.5 238.6 21.8Q237.25 25.1 237.25 29Q237.25 32.9 238.6 36.2Q239.95 39.5 242.35 41.92Q244.75 44.35 247.93 45.67Q251.1 47 254.75 47Q258.6 47 261.2 46.05Q263.8 45.1 266 43.15V37.55Q264.8 39.1 263.1 40.28Q261.4 41.45 259.32 42.1Q257.25 42.75 254.75 42.75Q251.3 42.75 248.35 41Q245.4 39.25 243.57 36.15Q241.75 33.05 241.75 29ZM280.85 36H299.35L297.85 32H282.35ZM290 19.4 296 33.5 296.4 34.5 301.5 46.5H306.25L290 9.75L273.75 46.5H278.5L283.7 34.2L284.1 33.3Z"/><path fill="currentColor" d="M152 73.5V108.5H156.25V73.5ZM170 73.5 154.95 90 170.75 108.5H176L160.1 89.9L175.25 73.5ZM187.6 98H206.1L204.6 94H189.1ZM196.75 81.4 202.75 95.5 203.15 96.5 208.25 108.5H213L196.75 71.75L180.5 108.5H185.25L190.45 96.2L190.85 95.3ZM217.75 77.5H226.75V108.5H231V77.5H240V73.5H217.75ZM250.85 91.5H274.85V87.5H250.85ZM272 73.5V108.5H276.25V73.5ZM248.5 73.5V108.5H252.75V73.5ZM290.6 108.5H308.25V104.5H290.6ZM290.6 77.5H308.25V73.5H290.6ZM290.6 91.5H307.25V87.5H290.6ZM288.25 73.5V108.5H292.5V73.5ZM326 91.25 338 108.5H343.25L330.75 91.25ZM319.75 73.5V108.5H324V73.5ZM322.1 77.25H329.25Q331.5 77.25 333.23 78.05Q334.95 78.85 335.92 80.35Q336.9 81.85 336.9 84Q336.9 86.15 335.92 87.65Q334.95 89.15 333.23 89.95Q331.5 90.75 329.25 90.75H322.1V94.5H329.25Q332.65 94.5 335.32 93.22Q338 91.95 339.57 89.58Q341.15 87.2 341.15 84Q341.15 80.75 339.57 78.4Q338 76.05 335.32 74.78Q332.65 73.5 329.25 73.5H322.1ZM351.75 73.5V108.5H356V73.5ZM394.5 73.5V99.55L368 71.75V108.5H372.25V82.45L398.75 110.25V73.5ZM413.1 108.5H430.75V104.5H413.1ZM413.1 77.5H430.75V73.5H413.1ZM413.1 91.5H429.75V87.5H413.1ZM410.75 73.5V108.5H415V73.5Z"/></symbol><symbol id="mk-v" viewBox="-20.1 0 160.2 200"><circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="2.2"/><g fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(21.56 29) scale(.62)"><path d="M0 100V0L38 62L76 0V100"/><path d="M76 60L120 0"/><path d="M93 37L124 100"/></g><path fill="currentColor" d="M24.5 152.12 29.74 161.5 34.98 152.12 36.18 163H38.14L36.18 146.09L29.74 157.76L23.3 146.09L21.35 163H23.3ZM44.3 146.9V163H46.25V146.9ZM53.33 146.9V163H61.61V161.16H55.28V146.9ZM68.23 154.95Q68.23 153.06 69.07 151.65Q69.91 150.24 71.27 149.43Q72.62 148.62 74.21 148.62Q75.36 148.62 76.31 148.92Q77.27 149.22 78.05 149.76Q78.83 150.3 79.38 151.02V148.44Q78.37 147.54 77.18 147.11Q75.98 146.67 74.21 146.67Q72.53 146.67 71.07 147.28Q69.61 147.89 68.51 149Q67.4 150.12 66.78 151.64Q66.16 153.16 66.16 154.95Q66.16 156.74 66.78 158.26Q67.4 159.78 68.51 160.9Q69.61 162.01 71.07 162.62Q72.53 163.23 74.21 163.23Q75.98 163.23 77.18 162.79Q78.37 162.36 79.38 161.46V158.88Q78.83 159.6 78.05 160.14Q77.27 160.68 76.31 160.98Q75.36 161.28 74.21 161.28Q72.62 161.28 71.27 160.47Q69.91 159.66 69.07 158.24Q68.23 156.81 68.23 154.95ZM87.78 158.17H96.29L95.6 156.33H88.47ZM91.98 150.53 94.74 157.02 94.93 157.48 97.27 163H99.46L91.98 146.09L84.51 163H86.69L89.09 157.34L89.27 156.93Z"/><path fill="currentColor" d="M-10.24 179.9V196H-8.28V179.9ZM-1.96 179.9 -8.88 187.49 -1.61 196H0.8L-6.51 187.44L0.46 179.9ZM7.7 191.17H16.21L15.52 189.33H8.39ZM11.91 183.53 14.67 190.02 14.85 190.48 17.2 196H19.38L11.91 179.09L4.43 196H6.62L9.01 190.34L9.19 189.93ZM23.13 181.74H27.27V196H29.22V181.74H33.36V179.9H23.13ZM39.91 188.18H50.95V186.34H39.91ZM49.64 179.9V196H51.6V179.9ZM38.83 179.9V196H40.79V179.9ZM59.76 196H67.88V194.16H59.76ZM59.76 181.74H67.88V179.9H59.76ZM59.76 188.18H67.42V186.34H59.76ZM58.68 179.9V196H60.63V179.9ZM77.6 188.06 83.12 196H85.54L79.79 188.06ZM74.73 179.9V196H76.68V179.9ZM75.81 181.62H79.1Q80.13 181.62 80.93 181.99Q81.72 182.36 82.17 183.05Q82.62 183.74 82.62 184.73Q82.62 185.72 82.17 186.41Q81.72 187.1 80.93 187.47Q80.13 187.84 79.1 187.84H75.81V189.56H79.1Q80.66 189.56 81.89 188.97Q83.12 188.39 83.85 187.29Q84.57 186.2 84.57 184.73Q84.57 183.24 83.85 182.15Q83.12 181.07 81.89 180.49Q80.66 179.9 79.1 179.9H75.81ZM91.01 179.9V196H92.96V179.9ZM112.23 179.9V191.88L100.04 179.09V196H102V184.02L114.19 196.81V179.9ZM122.35 196H130.47V194.16H122.35ZM122.35 181.74H130.47V179.9H122.35ZM122.35 188.18H130.01V186.34H122.35ZM121.27 179.9V196H123.22V179.9Z"/></symbol></defs></svg>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#topo" aria-label="Milca Katherine, início"><svg width="107" height="48" viewBox="0 0 267.4 120" role="img" aria-label="Milca Katherine"><use href="#mk-h"/></svg></a>
+    <a class="brand" href="#topo" aria-label="Milca Katherine, início"><svg width="196" height="54" viewBox="0 0 436.2 120" role="img" aria-label="Milca Katherine"><use href="#mk-h"/></svg></a>
     <nav aria-label="Seções">
       <a href="#sobre">Sobre</a>
       <a href="#produtos">Produtos</a>
@@ -251,7 +254,7 @@ section{padding:clamp(64px,9vw,112px) 0}
     <div class="grid">
 
       <article class="card reveal" style="--d:0ms">
-        <div class="visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c.9-3.8 3.6-5.8 7-5.8s6.1 2 7 5.8"/><path d="M18.5 3.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg></div>
+        <div class="visual visual--logo"><img class="logo" src="img/logo-avaliacao-horizontal.webp" width="720" height="225" alt="Logo da Avaliação de Identidade" loading="lazy"></div>
         <div class="card-body"><span class="tag">Avaliação</span><h3>Avaliação de Identidade</h3></div>
         <div class="card-foot"><a class="btn btn--primary" data-link="identidade" href="#produtos">Quero conhecer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </article>
@@ -270,23 +273,23 @@ section{padding:clamp(64px,9vw,112px) 0}
   <div class="wrap">
     <div class="sec-head reveal"><p class="kicker">Redes e comunidade</p><h2>Fale e acompanhe por aqui</h2></div>
     <div class="sgrid">
-      <a class="scard reveal" style="--d:0ms" data-link="instagram" href="#" target="_blank" rel="noopener">
+      <a class="scard scard--ig reveal" style="--d:0ms" data-link="instagram" href="#" target="_blank" rel="noopener">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor"/></svg></div>
         <div class="t"><h3>Instagram</h3><small>@milcakatherine</small></div>
         <span class="go"><span>Seguir</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="scard reveal" style="--d:100ms" data-link="facebook" href="#" target="_blank" rel="noopener">
+      <a class="scard scard--fb reveal" style="--d:100ms" data-link="facebook" href="#" target="_blank" rel="noopener">
         <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg></div>
         <div class="t"><h3>Facebook</h3><small>Milca Katherine</small></div>
         <span class="go"><span>Acessar</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="scard reveal" style="--d:200ms" data-wa href="#" target="_blank" rel="noopener">
+      <a class="scard scard--wa reveal" style="--d:200ms" data-wa href="#" target="_blank" rel="noopener">
         <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.5-1.2A9 9 0 1012 3zm0 1.8a7.2 7.2 0 11-3.7 13.4l-.3-.2-2.6.7.7-2.5-.2-.3A7.2 7.2 0 0112 4.8zm-3 3.6c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.9 4.5 4 2.2.9 2.7.7 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.7-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.5-.6-.5z"/></svg></div>
         <div class="t"><h3>WhatsApp</h3><small>Fale comigo</small></div>
         <span class="go"><span>Conversar</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="scard scard--dev reveal" style="--d:300ms" data-link="devocional" href="#" target="_blank" rel="noopener">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.8v13.4c3.6-.3 6.2.2 8 1.7 1.8-1.5 4.4-2 8-1.7V4.8c-3.6-.3-6.2.2-8 1.7zM12 6.5v13.4"/></svg></div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.5-1.2A9 9 0 1012 3zm0 1.8a7.2 7.2 0 11-3.7 13.4l-.3-.2-2.6.7.7-2.5-.2-.3A7.2 7.2 0 0112 4.8zm-3 3.6c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.9 4.5 4 2.2.9 2.7.7 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.7-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.5-.6-.5z"/></svg></div>
         <div class="t"><h3>Devocional 2mm de Propósito</h3><small>Grupo no WhatsApp</small></div>
         <span class="go"><span>Entrar</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
@@ -298,7 +301,7 @@ section{padding:clamp(64px,9vw,112px) 0}
 
 <footer class="foot">
   <div class="wrap">
-    <svg class="lockup" width="118" height="182" viewBox="-1.7 0 123.4 190" role="img" aria-label="Milca Katherine"><use href="#mk-v"/></svg>
+    <svg class="lockup" width="118" height="147" viewBox="0 0 160.2 200" role="img" aria-label="Milca Katherine"><use href="#mk-v"/></svg>
     <nav aria-label="Documentos legais">
       <a href="/termos-de-uso/">Termos de Uso</a>
       <a href="/politica-de-privacidade/">Política de Privacidade</a>
