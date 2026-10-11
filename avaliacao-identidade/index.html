@@ -118,6 +118,14 @@ section{padding:88px 0;scroll-margin-top:12px}
 .tiles figure{margin:0;text-align:center;min-width:0}
 .tiles img{aspect-ratio:1/.96;object-fit:contain}
 .tiles figcaption{font:700 10px/1.2 "Montserrat",sans-serif;letter-spacing:-.01em;color:var(--muted);margin-top:4px;white-space:nowrap;overflow:visible}
+/* celular: topo ~10% mais compacto para o botão caber na primeira tela */
+@media (max-width:959px){
+  .top{padding-top:8px;padding-bottom:8px}
+  .hero .wrap{gap:12px}
+  .hero h1{font-size:clamp(29px,7.8vw,38px)}
+  .visual{max-width:270px}
+  .h-rest .hero-sub{margin-bottom:12px;padding:8px 14px}
+}
 @media (min-width:960px){
   .hero .wrap{grid-template-columns:1.12fr .88fr;grid-template-areas:". visual" "head visual" "rest visual" ". visual";grid-template-rows:1fr auto auto 1.2fr;column-gap:20px;row-gap:0;min-height:clamp(480px,calc(100svh - 84px),720px)}
   .hero h1{font-size:clamp(38px,3.7vw,52px)}
@@ -372,7 +380,7 @@ section{padding:88px 0;scroll-margin-top:12px}
   <div class="wrap">
     <div class="h-head rv">
       <div class="kicker"><span class="dots"><i></i><i></i><i></i><i></i></span>Autoconhecimento</div>
-      <h1>Você não precisa mudar quem é. <span>Precisa entender quem é.</span></h1>
+      <h1>Você não precisa mudar quem&nbsp;é. <span>Precisa entender quem&nbsp;é.</span></h1>
     </div>
     <div class="h-rest rv">
       <div class="hero-sub">4 testes + devolutiva individual</div>
@@ -738,7 +746,7 @@ section{padding:88px 0;scroll-margin-top:12px}
 <section class="dark final" id="final">
   <div class="wrap rv">
     <img class="blocks" src="../img/logo-avaliacao-vertical-branco.webp" width="600" height="833" alt="Avaliação de Identidade" loading="lazy">
-    <h2>Você não precisa mudar quem é. <span>Precisa entender quem é.</span></h2>
+    <h2>Você não precisa mudar quem&nbsp;é. <span>Precisa entender quem&nbsp;é.</span></h2>
     <p class="lead" style="color:#c9ccd2">4 testes + devolutiva individual.</p>
     <div class="cta-row"><a class="btn btn-light" href="#oferta">Quero fazer minha avaliação <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
@@ -778,10 +786,10 @@ section{padding:88px 0;scroll-margin-top:12px}
    ========================================================== */
 var CONFIG = {
   // Checkout da Hotmart. Só os botões da dobra de oferta usam este link.
-  checkout: "", // TODO: colar o link de checkout da Hotmart da Milca
+  checkout: "https://pay.hotmart.com/H90765415F",
   // WhatsApp para dúvidas (código do país + DDD + número, só números)
   whatsapp: "5567992848220",
-  whatsappMsg: "Olá! Vim da página da Avaliação de Identidade e tenho uma dúvida.",
+  whatsappMsg: "Olá, Milca! Vim da página da Avaliação de Identidade e tenho uma dúvida.",
   // Links do rodapé. Deixe vazio para manter o "#".
   links: {
     instagram: "https://www.instagram.com/milcakatherine/",
