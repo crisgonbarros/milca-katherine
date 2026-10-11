@@ -99,6 +99,34 @@ section{padding:clamp(64px,9vw,112px) 0}
 .creds li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--terra);margin-top:.55em}
 .about-text .close{font-size:clamp(1.2rem,2.2vw,1.45rem);color:var(--argila);margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--linha)}
 
+
+/* sobre compacto: cabe na tela do computador */
+@media (min-width:861px){
+  .about{padding:clamp(40px,6svh,72px) 0}
+  .about .wrap{grid-template-columns:auto 1fr;gap:clamp(32px,5vw,72px)}
+  .about-photo{height:min(calc(100svh - 150px),560px);aspect-ratio:900/1352;min-height:360px}
+  .about-photo img{height:100%;width:100%}
+  .about-text{max-width:640px}
+  .about-text h2{font-size:clamp(1.8rem,3vw,2.4rem)!important;margin-bottom:1rem!important}
+  .about-text .kicker{margin-bottom:.6rem}
+  .about-text p{font-size:.98rem;line-height:1.6;margin:0 0 .7rem}
+  .about-text .hi{font-size:1.1rem}
+  .creds{margin:1rem 0}
+  .creds li{font-size:.9rem}
+  .about-text .close{font-size:1.1rem;margin-top:1rem;padding-top:.9rem}
+}
+
+@media (min-width:861px) and (max-height:760px){
+  .about{padding:28px 0}
+  .about-text .kicker{display:none}
+  .about-text h2{font-size:1.9rem!important;margin-bottom:.7rem!important}
+  .about-text p{font-size:.92rem;line-height:1.5;margin:0 0 .5rem}
+  .about-text .hi{font-size:1rem}
+  .creds{gap:4px;margin:.6rem 0}
+  .creds li{font-size:.85rem}
+  .about-text .close{display:none}
+}
+
 /* produtos */
 .products{background:var(--rosa)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:820px}
